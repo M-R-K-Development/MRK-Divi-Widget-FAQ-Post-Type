@@ -40,6 +40,7 @@
 
             $args = array(
                     'post_type' => $custom_post_type,
+                    'posts_per_page' = -1,
                     'tax_query' => array(
                         array(
                         'taxonomy' => 'faq_category',
