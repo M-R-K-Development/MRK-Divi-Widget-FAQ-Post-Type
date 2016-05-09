@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * Staff Widget
+ * FAQ Post Widget
  *
  */
 class MrkDiviWidgetFaqPostType extends DiviCustomWidget
@@ -15,12 +15,26 @@ class MrkDiviWidgetFaqPostType extends DiviCustomWidget
         );
 
         $this->addField(
+                array(
+                    'display_title' => array(
+                        'label'             => 'Display Title',
+                        'type'              => 'yes_no_button',
+                        'description'       => 'Would you like to display a title on the FAQ Block?',
+                        'affects'           => array(
+                                    '#et_pb_title_text'
+                                ),
+                        ),
+                )
+        );
+
+        $this->addField(
             array(
                 'title_text' => array(
                 'label'           => __('Widget title', 'et_builder'),
                 'type'            => 'text',
                 'option_category' => 'basic_option',
                 'description'     => __('Title to display before the grid.', 'et_builder'),
+                'depends_show_if' => 'on',
                 ),
             )
         );
@@ -35,6 +49,29 @@ class MrkDiviWidgetFaqPostType extends DiviCustomWidget
                 )
         );
 
+        $this->addField(
+                array(
+                    'enable_groups' => array(
+                        'label'             => 'Group by Category',
+                        'type'              => 'yes_no_button',
+                        'description'       => 'If you would like your FAQs grouped by category.',
+                        ),
+                )
+        );
+
+        $this->addField(
+                array(
+                    'filter_by_category_on' => array(
+                        'label'             => 'Only show specific Categories',
+                        'type'              => 'yes_no_button',
+                        'description'       => 'Select to filter outpt by specific categories.',
+                        'affects'           => array(
+                                    '#et_pb_include_categories'
+                                ),
+                        ),
+                )
+        );
+
         $this->addField(array(
                  'include_categories' => array(
                     'label'           => esc_html__( 'Include from only these categories', 'et_builder' ),
@@ -42,6 +79,7 @@ class MrkDiviWidgetFaqPostType extends DiviCustomWidget
                     'render_options'  => array('term_name' => 'faq_category'),
                     'option_category' => 'basic_option',
                     'description'     => esc_html__( 'Select the categories that you would like to include in the feed.', 'et_builder' ),
+                    'depends_show_if' => 'on',
                 ),
       ));
 

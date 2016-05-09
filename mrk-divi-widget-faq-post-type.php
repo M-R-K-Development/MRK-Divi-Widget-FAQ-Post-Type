@@ -64,9 +64,9 @@ function custom_post_type_faq()
         'filter_items_list'     => __( 'Filter items list', 'text_domain' ),
     );
     $rewrite = array(
-        'slug'                  => 'faq',
-        'with_front'            => true,
-        'pages'                 => true,
+        'slug'                  => 'faqs',
+        'with_front'            => false,
+        'pages'                 => false,
         'feeds'                 => true,
     );
     $args = array(
@@ -76,7 +76,7 @@ function custom_post_type_faq()
         'supports'              => array('title', 'editor'),
         'taxonomies'            => array( 'faq_category' ),
         'hierarchical'          => false,
-        'public'                => true,
+        'public'                => false,
         'show_ui'               => true,
         'show_in_menu'          => true,
         'menu_position'         => 5,
